@@ -6,7 +6,7 @@ import { DepartmentComponent } from './components/department/department.componen
 import { EmployeeComponent } from './components/employee/employee.component';
 
 const appRoutes:Routes=[
-  {path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: '', redirectTo: '/enterprise', pathMatch: 'full' },
   {path:'login', component:LoginComponent},
   {path:'enterprise', component:EnterpriseComponent},
   {path:'department/:id', component: DepartmentComponent },

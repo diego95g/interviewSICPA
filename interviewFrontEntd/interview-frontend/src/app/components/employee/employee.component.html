@@ -1,90 +1,89 @@
 <app-menu></app-menu>
 <div class="container">
-    <div class="row text-center mt-5">
-      <div class="col">
-        <h2>CRUD Employees</h2>
-      </div>
+  <div class="row text-center mt-5">
+    <div class="col">
+      <h2>Employees</h2>
     </div>
-    <div class="row mt-5">
-      <div class="col-md-1">
-        <label for="txtId" class="from-label">ID</label>
-        <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="employee.id" disabled="true">
-      </div>
-      <div class="col-md-4">
-        <label for="txtName" class="from-label">Name</label>
-        <input type="text" name="id" id="txtName" class="form-control" [(ngModel)]="employee.name">
-      </div>
-      <div class="col-md-4">
-        <label for="txtSurname" class="from-label">Surname</label>
-        <input type="text" name="id" id="txtSurname" class="form-control" [(ngModel)]="employee.surname">
-      </div>
-      <div class="col-md-2">
-        <label for="txtAge" class="from-label">Age</label>
-        <input type="number" name="id" id="txtAge" class="form-control" [(ngModel)]="employee.age">
-      </div>
-      <div class="col-md-4">
-        <label for="txtEmail" class="from-label">Email</label>
-        <input type="email" placeholder="name@example.com" name="id" id="txtEmail" class="form-control" [(ngModel)]="employee.email">
-      </div>
-      <!--<div class="col-md-4">
-        <label for="txtPosition" class="from-label">Position</label>
-        <input type="text" name="id" id="txtPosition" class="form-control" [(ngModel)]="employee.position">
-      </div>-->
-      <div class="col-md-4">
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-1">
+      <label for="txtId" class="from-label">ID</label>
+      <input type="text" name="id" id="txtId" class="form-control" [(ngModel)]="employee.id" disabled="true">
+    </div>
+    <div class="col-md-4">
+      <label for="txtName" class="from-label">Name</label>
+      <input type="text" name="id" id="txtName" class="form-control" [(ngModel)]="employee.name">
+    </div>
+    <div class="col-md-4">
+      <label for="txtSurname" class="from-label">Surname</label>
+      <input type="text" name="id" id="txtSurname" class="form-control" [(ngModel)]="employee.surname">
+    </div>
+    <div class="col-md-2">
+      <label for="txtAge" class="from-label">Age</label>
+      <input type="number" name="id" id="txtAge" class="form-control" [(ngModel)]="employee.age">
+    </div>
+    <div class="col-md-4">
+      <label for="txtEmail" class="from-label">Email</label>
+      <input type="email" placeholder="name@example.com" name="id" id="txtEmail" class="form-control"
+        [(ngModel)]="employee.email">
+    </div>
+    <div class="col-md-4">
       <label for="position" class="from-label">Position</label>
       <select id="position" class="form-control" name="position" [(ngModel)]="employee.position">
         <option *ngFor="let position of positions" [value]="position">{{position}}</option>
-      </select></div>
-      
-      <div class="form-check col-md-1"><br>
-        <input class="form-check-input" type="checkbox" name="myCheckbox" [(ngModel)]="employee.status" id="myCheckbox">
-        <label class="form-check-label" for="myCheckbox">
-          Status
-        </label>
-      </div>
+      </select>
     </div>
-    <div class="row mt-5">
-      <div class="col">
-        <button class="btn btn-success" type="button" (click)="onAddEmployee(employee)">Agregar</button>
-        <button class="btn btn-warning m-2" type="button" (click)="onUpdateEmployee(employee)">Modificar</button>
-        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
-      </div>
-      
-    </div>
-    <a routerLink="/department" class="btn btn-info" style="float:right" (click)="goBack()">Return to departments</a>
-    <div class="row mt-5">
-      <div class="col">
-        <table id="dtemployee" class="table table-striped" style="width: 100%;">
-          <thead>
-            <tr>
-              <th>Seleccionar</th>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>Age</th>
-              <th>Email</th>
-              <th>Position</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of datatable">
-              <td><button type="button" class="btn" (click)="onSetData(item)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                </svg>
-              </button></td>
-              <td> {{ item.id }} </td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.surname }}</td>
-              <td>{{ item.age }}</td>
-              <td>{{ item.email }}</td>
-              <td>{{ item.position }}</td>
-              <td>{{ item.status?'Active':'Deactive' }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
+    <div class="form-check col-md-1"><br>
+      <input class="form-check-input" type="checkbox" name="myCheckbox" [(ngModel)]="employee.status" id="myCheckbox">
+      <label class="form-check-label" for="myCheckbox">
+        Status
+      </label>
     </div>
   </div>
+  <div class="row mt-5">
+    <div class="col">
+      <button class="btn btn-success" type="button" (click)="onAddEmployee(employee)">Add</button>
+      <button class="btn btn-warning m-2" type="button" (click)="onUpdateEmployee(employee)">Edit</button>
+      <button class="btn btn-primary m-2" type="button" (click)="clear()">Clean</button>
+    </div>
 
+  </div>
+  <a routerLink="/department" class="btn btn-info" style="float:right" (click)="goBack()">Return to departments</a>
+  <div class="row mt-5">
+    <div class="col">
+      <table id="dtemployee" class="table table-striped" style="width: 100%;">
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datatable">
+            <td><button type="button" class="btn" (click)="onSetData(item)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                </svg>
+              </button></td>
+            <td> {{ item.id }} </td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.surname }}</td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.position }}</td>
+            <td>{{ item.status?'Active':'Deactive' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

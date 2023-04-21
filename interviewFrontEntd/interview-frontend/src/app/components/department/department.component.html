@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row text-center mt-5">
       <div class="col">
-        <h2>CRUD Department</h2>
+        <h2>Departments</h2>
       </div>
     </div>
     <div class="row mt-5">
@@ -31,9 +31,9 @@
     </div>
     <div class="row mt-5">
       <div class="col">
-        <button class="btn btn-success" type="button" (click)="onAddDepartment(department)">Agregar</button>
-        <button class="btn btn-warning m-2" type="button" (click)="onUpdateDepartment(department)">Modificar</button>
-        <button class="btn btn-primary m-2" type="button" (click)="clear()">Limpiar</button>
+        <button class="btn btn-success" type="button" (click)="onAddDepartment(department)">Add</button>
+        <button class="btn btn-warning m-2" type="button" (click)="onUpdateDepartment(department)">Edit</button>
+        <button class="btn btn-primary m-2" type="button" (click)="clear()">Clean</button>
       </div>
       
     </div>
@@ -43,7 +43,7 @@
         <table id="dtdepartment" class="table table-striped" style="width: 100%;">
           <thead>
             <tr>
-              <th>Seleccionar</th>
+              <th>Select</th>
               <th>Id</th>
               <th>Name</th>
               <th>Phone</th>
