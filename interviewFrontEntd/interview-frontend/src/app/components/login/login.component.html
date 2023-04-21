@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="col-md-4 myDiv p-3">
+        <form>
+            <h4 style="text-align: center;" class="mt-2">Log in</h4>
+            <label for="Email_User">user name:</label>
+            <input type="text" [(ngModel)]="user.Email_User" class="form-control" name="Email_User">
+            <label for="Password_User">Password</label>
+            <input type="password" [(ngModel)]="user.Password_User" class="form-control" name="Password_User">
+            <input type="button" class="btn btnSubmit" (click)="User_Login()" value="Log In">
+        </form>
+    </div>
+</div>
