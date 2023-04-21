@@ -5,22 +5,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace interviewSICPA.Controllers
 {
+    
     public class EmployeeController : ApiController
     {
-        // GET: api/Employee
-        public IEnumerable<Employee> Get()
-        {
-            EmployeeManagement gEmployee = new EmployeeManagement();
-            return gEmployee.getEmployee();
-        }
 
         // GET: api/Employee/5
-        public string Get(int id)
+        public IEnumerable<Employee> Get(int id)
         {
-            return "value";
+            EmployeeManagement gEmployee = new EmployeeManagement();
+            return gEmployee.getEmployee(id);
         }
 
         // POST: api/Employee

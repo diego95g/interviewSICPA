@@ -173,6 +173,16 @@ create table ENTERPRISE (
    constraint PK_ENTERPRISE primary key nonclustered (ID_ENTERPRISE)
 )
 go
+/*==============================================================*/
+/* Table: SYSTEMUSER */
+/*==============================================================*/
+CREATE TABLE SYSTEMUSER (
+    ID_USER INT IDENTITY(1,1) PRIMARY KEY,
+    USERNAME_USER VARCHAR(50) NOT NULL,
+    PASSWORD_USER VARCHAR(100) NOT NULL,
+    CREATIONDATE_USER DATETIME NOT NULL,
+    STATUS BIT NOT NULL
+)go
 
 alter table DEPARTMENT
    add constraint FK_DEPARTME_ENTERPRIS_ENTERPRI foreign key (ID_ENTERPRISE)

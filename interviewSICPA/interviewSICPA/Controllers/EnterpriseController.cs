@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace interviewSICPA.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS")]
+    
     public class EnterpriseController : ApiController
     {
         // GET: api/Enterprise

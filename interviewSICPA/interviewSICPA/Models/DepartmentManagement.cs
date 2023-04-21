@@ -11,7 +11,7 @@ namespace interviewSICPA.Models
     public class DepartmentManagement
     {
 
-        public List<Department> getDepartment()
+        public List<Department> getDepartment(int id)
         {
             List<Department> lista = new List<Department>();
             string strConn = ConfigurationManager.ConnectionStrings["BD_Local"].ToString();
@@ -22,21 +22,23 @@ namespace interviewSICPA.Models
                                                     "status_department, " +
                                                     "description_department, " +
                                                     "name_department, " +
-                                                    "phone_department" +
-                                                "from department", conn);
+                                                    "phone_department " +
+                                                "from department where id_enterprise=@id", conn);
             try
             {
+                command.Parameters.AddWithValue("@id", id);
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        int id = reader.GetInt32(0);
-                        Boolean status = reader.GetBoolean(1);
-                        string description = reader.GetString(2);
-                        string name=reader.GetString(3);
-                        string phone = reader.GetString(4);
+                        Department department = new Department();
+                        department.id = reader.GetInt32(0);
+                        department.status = reader.GetBoolean(1);
+                        department.description = reader.GetString(2);
+                        department.name=reader.GetString(3);
+                        department.phone = reader.GetString(4);
 
-                        Department department = new Department(status, description, name, phone);
+                        
                         lista.Add(department);
                     }
                     reader.Close();
@@ -106,8 +108,9 @@ namespace interviewSICPA.Models
                         command.Parameters.Add("@description", SqlDbType.NVarChar).Value = department.description;
                         command.Parameters.Add("@name", SqlDbType.NVarChar).Value = department.name;
                         command.Parameters.Add("@phone", SqlDbType.NVarChar).Value = department.phone;
+                        command.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
                         connection.Open();
-                        command.ExecuteNonQuery();
+                        result=command.ExecuteNonQuery();
                     }
                 }
             }

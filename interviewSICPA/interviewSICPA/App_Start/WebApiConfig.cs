@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace interviewSICPA
 {
@@ -10,7 +11,9 @@ namespace interviewSICPA
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de Web API
+            var cors = new EnableCorsAttribute("*", "*", "*");
 
+            config.EnableCors(cors);
             // Rutas de Web API
             config.MapHttpAttributeRoutes();
 
@@ -19,6 +22,8 @@ namespace interviewSICPA
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+
         }
     }
 }

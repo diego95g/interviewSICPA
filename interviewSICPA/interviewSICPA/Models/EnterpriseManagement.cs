@@ -27,15 +27,16 @@ namespace interviewSICPA.Models
             try{
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        int id = reader.GetInt32(0);
-                        Boolean status = reader.GetBoolean(1);
-                        string address = reader.GetString(2);
-                        string name = reader.GetString(3);
-                        string phone = reader.GetString(4);
+                        Enterprise enterprise = new Enterprise();
+                        enterprise.id=reader.GetInt32(0);
+                        enterprise.status = reader.GetBoolean(1);
+                        enterprise.address = reader.GetString(2);
+                        enterprise.name = reader.GetString(3);
+                        enterprise.phone = reader.GetString(4);
 
-                        Enterprise enterprise = new Enterprise(name, phone, address, status);
+                        
                         lista.Add(enterprise);
                     }
                     reader.Close();

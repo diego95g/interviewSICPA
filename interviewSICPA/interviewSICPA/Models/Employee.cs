@@ -7,6 +7,7 @@ namespace interviewSICPA.Models
 {
     public class Employee
     {
+        public int idDepartment { get; set; }
         public int id { get; set; }
         public bool status { get; set; }
         public int age { get; set; }
@@ -17,7 +18,7 @@ namespace interviewSICPA.Models
 
         public Employee() { }
 
-        public Employee( bool status, int age, string email, string name, string position, string surname)
+        public Employee(bool status, int age, string email, string name, string position, string surname)
         {
             this.status = status;
             this.age = age;
